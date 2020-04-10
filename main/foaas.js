@@ -10,7 +10,7 @@ var headerOptions = {
 
 var url = 'https://www.foaas.com/awesome/Tim';
 
-const getData = async url => {
+const getFO = async url => {
     try {
         const response = await axios.get(url);
         const data = response.data;
@@ -20,4 +20,6 @@ const getData = async url => {
     }
 };
 
-getData(url);
+module.exports = {
+    getFO: getFO
+}

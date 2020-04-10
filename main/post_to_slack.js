@@ -1,9 +1,10 @@
 const { WebClient } = require('@slack/web-api');
-var Constants = require('../config/constants.js'); // Contains secrets, not in repo
-var ErrorCode = require('@slack/web-api');
+const Constants = require('../config/constants.js');
+const Creds = require('../config/creds');
+const ErrorCode = require('@slack/web-api');
 
-const token = Constants.BOT_USER_OAUTH_ACCESS_TOKEN;
-const conversationId = Constants.TB_DEV_CHANNEL_ID;
+const token = Creds.BOT_USER_OAUTH_ACCESS_TOKEN;
+const conversationId = Constants.DEFAULT_CHANNEL_ID;
 
 // Initialize
 const web = new WebClient(token);
