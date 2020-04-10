@@ -1,8 +1,11 @@
 // This file is for communicating with Slack
 
 const { WebClient } = require('@slack/web-api');
-const Creds = require('../config/creds'); // Require the oath token
 const ErrorCode = require('@slack/web-api');
+// The creds are not going in the public github
+// Currently you only need the BOT_USER_OAUTH_ACCESS_TOKEN
+// Contact admin for a token.
+const Creds = require('../config/creds'); 
 
 
 class Slackbot {
