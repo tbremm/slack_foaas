@@ -1,5 +1,5 @@
 const { WebClient } = require('@slack/web-api');
-var Constants = require('../config/constants.js');
+var Constants = require('../config/constants.js'); // Contains secrets, not in repo
 var ErrorCode = require('@slack/web-api');
 
 const token = Constants.BOT_USER_OAUTH_ACCESS_TOKEN;
@@ -17,8 +17,6 @@ const sendSlack = async text => {
             text: text,
             channel: conversationId
         });
-
-        // Result contains an ID for the message 'ts'
         console.log('Successfully sent "' + result.message.text + '" as ' + result.message.username + ' in conversation ' + conversationId);
     } catch (error) {
         if (error.code === ErrorCode.PlatformError) {
