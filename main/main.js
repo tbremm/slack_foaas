@@ -9,7 +9,7 @@ async function main() {
     const foaas = new Foaas.Foaas();
     const slackbot = new Slack.Slackbot();
     const channel = Constants.DEFAULT_CHANNEL_ID;
-    const fo = await foaas.getFO(Constants.URL_FOAAS, "outside", "Bindi", "Tim");
+    const fo = await foaas.getFO(Constants.URL_FOAAS, "tucker", "Tim");
     let text = fo.message + "\n" + fo.subtitle;
     let slackProps = {
         text: text,
