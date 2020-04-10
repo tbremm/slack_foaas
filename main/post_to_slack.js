@@ -8,13 +8,13 @@ const conversationId = Constants.TB_DEV_CHANNEL_ID;
 // Initialize
 const web = new WebClient(token);
 
-(async () => {
+const sendSlack = async text => {
     let result;
     try  {
         // Post a message to the channel, await results
         // https://api.slack.com/methods/chat.postMessage
         result = await web.chat.postMessage({
-            text: 'Hello world',
+            text: text,
             channel: conversationId
         });
 
@@ -27,4 +27,8 @@ const web = new WebClient(token);
             console.log(error.data);
         }
     }
-})();
+}
+
+module.exports = {
+    sendSlack: sendSlack
+}

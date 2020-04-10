@@ -1,7 +1,7 @@
 const SLACK_URL = "https://slack.com/api/chat.postMessage";
-const OAUTH_ACCESS_TOKEN = "xoxp-696171472292-685244567795-1046095765815-a63d1010caa35dd5bb01a5574ad9000b";
-const BOT_USER_OAUTH_ACCESS_TOKEN = "xoxb-696171472292-752487723348-2oe7OmThLFON4pcsqGstVR6U";
-const WEBHOOK_TB_DEV = "https://hooks.slack.com/services/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";
+const OAUTH_ACCESS_TOKEN = "xoxp-696171472292-685244567795-1073656799504-1872468619e93ad0264cc5c2ddb1c91e";
+const BOT_USER_OAUTH_ACCESS_TOKEN = "xoxb-696171472292-752487723348-lvxvrQbA18YHDY4ghUi6Rl6b";
+const WEBHOOK_TB_DEV = "https://hooks.slack.com/services/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";
 const DEFAULT_SLACK_CHANNEL = "tb-dev";
 const TB_DEV_CHANNEL_ID = "GLFAXF5B5";
 const APP_ID = "AMH4N17RA";
@@ -21,10 +21,3 @@ module.exports = {
     CLIENT_SECRET,
     SIGNING_SECRET
 }
-
-// export
-// export
-// export
-// export
-// export
-// export

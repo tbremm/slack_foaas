@@ -1,38 +1,23 @@
 // This file is for communicating with the FOAAS API
 
-const pkgRequest = require('request');
-var http = require('http');
+const axios = require("axios");
+const slack = require("./post_to_slack");
 
 var headerOptions = {
     'Content-Type': 'application/json',
     'Accept': 'text/plain'
 };
 
-var myLink = 'https://www.foaas.com/awesome/Tim';
+var url = 'https://www.foaas.com/awesome/Tim';
 
-await getFuckYou(headerOptions, myLink);
-console.log('Done awaiting on getFuckYou');
-
-async function getFuckYou (header, link) {
+const getData = async url => {
     try {
-        const fuResponse = await sendFURequest(header, link);
-    } catch (err) {
-        console.log(err);
+        const response = await axios.get(url);
+        const data = response.data;
+        slack.sendSlack(response.data.message + '\n\t' + response.data.subtitle);
+    } catch (error) {
+        console.log(error);
     }
-    console.log(fuResponse);
-}
+};
 
-async function sendFURequest (header, link) {
-    let resp = await pkgRequest.get({
-        headers: header,
-        uri: link
-    }, (error, response, body) => {
-        if (!error && response.statusCode == 200) {
-            return response.body;
-        } else {
-            console.log(error);
-            console.log(response.statusCode);
-            return null;
-        }
-    });
-}
+getData(url);
