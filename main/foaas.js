@@ -17,7 +17,7 @@ class Foaas {
 
             const response = await axios.get(url + strFO);
             console.log(response);
-            return ([response.data.message, response.data.subtitle]);
+            return response.data; //([response.data.message, response.data.subtitle]);
         } catch (error) {
             console.log(error);
         }

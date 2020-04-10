@@ -6,18 +6,15 @@ const Foaas = require("./foaas");
 // the API calls are all async and this is
 // what I found works (and online)
 async function main() {
-    foaas = new Foaas.Foaas();
-    const fo = await foaas.getFO(Constants.URL_FOAAS, "outside", "Bindi", "Tim");
-
-    let text = fo[0] + "\n\t\t" + fo[1];
-
-    const channel = Constants.DEFAULT_CHANNEL_ID;
+    const foaas = new Foaas.Foaas();
     const slackbot = new Slack.Slackbot();
-    slackProps = {
+    const channel = Constants.DEFAULT_CHANNEL_ID;
+    const fo = await foaas.getFO(Constants.URL_FOAAS, "outside", "Bindi", "Tim");
+    let text = fo.message + "\n" + fo.subtitle;
+    let slackProps = {
         text: text,
         channel: channel
     };
-
     slackbot.send(slackProps);
 }
 
