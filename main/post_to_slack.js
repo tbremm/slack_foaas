@@ -8,7 +8,7 @@ const ErrorCode = require('@slack/web-api');
 
 class Slackbot {
     // Send a basic text message to the default channel
-    async sendSlack(text, channel) {
+    async send(text, channel) {
         const web = new WebClient(Creds.BOT_USER_OAUTH_ACCESS_TOKEN);
         let result;
         try  {

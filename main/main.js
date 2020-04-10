@@ -13,7 +13,7 @@ async function main() {
 
     const channel = Constants.DEFAULT_CHANNEL_ID;
     const slackbot = new Slack.Slackbot();
-    slackbot.sendSlack(text, channel);
+    slackbot.send(text, channel);
 }
 
 main();
