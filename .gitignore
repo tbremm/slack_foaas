@@ -1,4 +1,3 @@
-config/constants.js
 node_modules/.bin/sshpk-conv
 node_modules/.bin/sshpk-conv.cmd
 node_modules/.bin/sshpk-sign
