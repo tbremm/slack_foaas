@@ -2,6 +2,7 @@
 
 const axios = require("axios");
 
+
 class Foaas {
 
     // url:     Base FOAAS URL
@@ -14,7 +15,6 @@ class Foaas {
             for (let arg of args) {
                 strFO += '/' + arg;
             }
-
             const response = await axios.get(url + strFO);
             console.log(response);
             return response.data; //([response.data.message, response.data.subtitle]);
@@ -23,7 +23,6 @@ class Foaas {
         }
     }
 };
-
 
 
 module.exports = {
