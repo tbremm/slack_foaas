@@ -6,8 +6,8 @@ const axios = require("axios");
 class Foaas {
 
     // url:     Base FOAAS URL
-    // arg1:    First argument to FOAAS api (https://www.foaas.com/arg1)
-    // arg2:    Second argument to FOAAS api (https://www.foaas.com/arg1/arg2)
+    // args:    Determines what API path is called
+    //          See https://www.foaas.com/ for details
     async getFO(url, ...args) {
         try {
             // build the api call
