@@ -28,13 +28,10 @@ async function main() {
             console.log(req.body);
             res.sendStatus(200);
             if (req.body.type == "url_verification") {
-                console.log("Token: " + req.body.token);
-                console.log("Challenge: " + req.body.challenge);;
-                console.log("Type: " + req.body.type);
+                console.log("URL Verification Challenge: " + req.body.challenge);
                 res.header({
                     "Content-type": "application/json"
                 });
-                console.log("URL Verification Challenge: " + req.body.challenge);
                 res.json([req.body.challenge]);
             } else if (req.body.event.type == "app_mention") {
                 let arText = req.body.event.text.split(" ");
