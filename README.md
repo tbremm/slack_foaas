@@ -9,7 +9,7 @@ _Note that this is using Windows CMD syntax. Someday I'll dual boot..._
 1. Make sure [ngrok](https://ngrok.com/download "Download ngrok") is installed and in your path
 2. Start ngrok in terminal
    1. `$ ngrok http <PORT>`
-   2. <PORT> should be set in the [config constants](https://github.com/tbremm/slack_foaas/blob/master/config/constants.js#L11 "WEB_SERVER_PORT")
+   2. `<PORT>` should be set in the [config constants](https://github.com/tbremm/slack_foaas/blob/master/config/constants.js#L11 "WEB_SERVER_PORT")
 3. Note the URL in ngrok's output in the terminal. This will be different each time the tunnel is restarted.
 4. Navigate to the project directory and start the program
    1. `$ node main/main.js`
