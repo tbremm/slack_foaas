@@ -8,15 +8,15 @@ class Foaas {
     // url:     Base FOAAS URL
     // args:    Determines what API path is called
     //          See https://www.foaas.com/ for details
-    async getFO(url, ...args) {
+    async getFO(url, args) {
         try {
-            // build the api call
+            // build the api command
             let strFO = '';
-            for (let arg of args) {
-                strFO += '/' + arg;
+            for (let i = 0; i < args.length; i++) {
+                strFO += '/' + args[i];
             }
             const response = await axios.get(url + strFO);
-            return response.data; //([response.data.message, response.data.subtitle]);
+            return response.data; // ([response.data.message, response.data.subtitle]);
         } catch (error) {
             console.log(error);
         }
