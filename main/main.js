@@ -33,18 +33,27 @@ async function main() {
                 // Need to return a copy of their challenge to verify the request URL
                 res.json([req.body.challenge]);
             } else if (req.body.event.type == "app_mention") {
-                let arText = req.body.event.text.split(" ");
-                arText.shift(); // Not passing the user ref to foaas
-                // Just blindly passing args through - TODO: verification, error handling
-                const fo = await foaas.getFO(Constants.URL_FOAAS, arText);
-                // TODO - Handle when message/subtitle don't exist due to error
-                let text = fo.message + "\n" + fo.subtitle;
-                // TODO - Enrich messages
-                let slackProps = {
-                    text: text,
-                    channel: req.body.event.channel
-                };
-                slackbot.send(slackProps);
+                try {
+                    let arText = req.body.event.text.split(" ");
+                    arText.shift(); // Not passing the user ref to foaas
+                    // Just blindly passing args through - TODO: verification, error handling
+                    const fo = await foaas.getFO(Constants.URL_FOAAS, arText);
+                    // TODO - Handle when message/subtitle don't exist due to error
+                    let text = fo.message + "\n" + fo.subtitle;
+                    // TODO - Enrich messages
+                    let slackProps = {
+                        text: text,
+                        channel: req.body.event.channel
+                    };
+                    slackbot.send(slackProps);
+                } catch (error) {
+                    console.log(error);
+                    let slackProps = {
+                        text: "An error has occurred:\n\n" + error,
+                        channel: req.body.event.channel
+                    };
+                    slackbot.send(slackProps);
+                }
             }
         });
 
