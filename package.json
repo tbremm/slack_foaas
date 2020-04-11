@@ -1,0 +1,29 @@
+{
+  "name": "slackbot_foaas",
+  "version": "1.0.0",
+  "description": "This provides the service of telling your friends to eff off.",
+  "main": "main/main.js",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"No test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tbremm/slack_foaas.git"
+  },
+  "keywords": [
+    "slack",
+    "slackbot",
+    "foaas"
+  ],
+  "author": "Timothy Bremm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tbremm/slack_foaas/issues"
+  },
+  "homepage": "https://github.com/tbremm/slack_foaas#readme"
+}
