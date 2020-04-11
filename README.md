@@ -2,7 +2,7 @@
 Slackbot for inappropriate API calls
 
 # State of the Slackbot
-Runs a local webserver and will call the [FOAAS API](https://www.foaas.com/) with the arguments given after a user mention (@mr_robot). Then posts the response to the slack channel that it was requested in. Needs error handling, input validation, etc. Currently a walking skeleton, but it techinically works!
+Runs a local webserver and will call the [FOAAS API](https://www.foaas.com/) with the arguments given after a user mention (@mr_robot). Then posts the response to the slack channel that it was requested in. Needs error handling, input validation, etc. Each time the webserver tunnel is created you have to reverify the URL with Slack because it's random each time because I'm too cheap to buy a paid ngrok subscription. Currently a walking skeleton, but it techinically works!
 
 # Usage
 _Note that this is using Windows CMD syntax. Someday I'll dual boot..._
@@ -34,4 +34,4 @@ _Note that this is using Windows CMD syntax. Someday I'll dual boot..._
 # Ideas
 1. Provide menu of possible fuck offs
 2. Add slash commands
-3. Host on AWS with a static domain instead of locally
+3. Host on AWS with a static domain instead of locally with ngrok
