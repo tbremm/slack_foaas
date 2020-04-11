@@ -4,7 +4,11 @@
   "description": "This provides the service of telling your friends to eff off.",
   "main": "main/main.js",
   "dependencies": {
+    "@slack/web-api": "^5.8.0",
     "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "ngrok": "^3.2.7",
     "request": "^2.88.2"
   },
   "devDependencies": {},

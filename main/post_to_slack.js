@@ -13,7 +13,6 @@ class Slackbot {
     async send(slackProps) {
         const web = new WebClient(Creds.BOT_USER_OAUTH_ACCESS_TOKEN);
         let result;
-        console.log(slackProps.text + ' ... ' + slackProps.channel);
         try  {
             result = await web.chat.postMessage({
                 text: slackProps.text,

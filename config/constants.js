@@ -8,11 +8,13 @@ const URL_FOAAS = "https://www.foaas.com";
 // const URL_SLACK_POST_MESSAGE = "https://slack.com/api/chat.postMessage"; // Might not need this
 const DEFAULT_SLACK_CHANNEL = "tb-dev";
 const DEFAULT_CHANNEL_ID = "GLFAXF5B5";
+const WEB_SERVER_PORT = 3000;
 
 
 module.exports = {
 //    URL_SLACK_POST_MESSAGE: URL_SLACK_POST_MESSAGE,
     DEFAULT_SLACK_CHANNEL,
     DEFAULT_CHANNEL_ID: DEFAULT_CHANNEL_ID,
-    URL_FOAAS: URL_FOAAS
+    URL_FOAAS: URL_FOAAS,
+    WEB_SERVER_PORT: WEB_SERVER_PORT
 };

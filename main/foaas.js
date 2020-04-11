@@ -16,7 +16,6 @@ class Foaas {
                 strFO += '/' + arg;
             }
             const response = await axios.get(url + strFO);
-            console.log(response);
             return response.data; //([response.data.message, response.data.subtitle]);
         } catch (error) {
             console.log(error);
