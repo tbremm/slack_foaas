@@ -10,7 +10,15 @@ _Note that this is using Windows CMD syntax. Someday I'll dual boot..._
 2. Start ngrok in terminal
    1. `$ ngrok http <PORT>`
    2. `<PORT>` should be set in the [config constants](https://github.com/tbremm/slack_foaas/blob/master/config/constants.js#L11 "WEB_SERVER_PORT")
-3. Note the URL in ngrok's output in the terminal. This will be different each time the tunnel is restarted.
+3. Note the Forwarding URL in ngrok's output in the terminal. This will be different each time the tunnel is restarted.
+   ```ngrok by @inconshreveable                                                                                   (Ctrl+C to quit)
+   Session Status                online
+   Account                       tbremm (Plan: Free)
+   Version                       2.3.35
+   Region                        United States (us)
+   Web Interface                 http://127.0.0.1:4040
+   Forwarding                    http://055cf5b0.ngrok.io -> http://localhost:3000
+   Forwarding                    https://055cf5b0.ngrok.io -> http://localhost:3000```
 4. Navigate to the project directory and start the program
    1. `$ node main/main.js`
 5. Go to Slack to [verify the URL](https://api.slack.com/apps/AMH4N17RA/event-subscriptions?)
