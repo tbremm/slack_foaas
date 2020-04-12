@@ -14,11 +14,7 @@ class Slackbot {
         const web = new WebClient(creds.BOT_USER_OAUTH_ACCESS_TOKEN);
         let result;
         try  {
-            result = await web.chat.postMessage({
-                text: slackProps.text,
-                channel: slackProps.channel
-                // Will add more settings as we progress
-            });
+            result = await web.chat.postMessage(slackProps);
         } catch (error) {
             if (error.code === errorcode.PlatformError) {
                 console.log(error.data);

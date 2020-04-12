@@ -34,8 +34,8 @@ async function main() {
                     if (arText[0] === 'operations') {
                         const ops = await myFoaas.getOperations(constants.URL_FOAAS);
                         let slackProps = {
-                            text: JSON.stringify(ops, null, 4),
-                            channel: req.body.event.channel
+                            'text': JSON.stringify(ops, null, 4),
+                            'channel': req.body.event.channel
                         };
                         slackbot.send(slackProps);
                     } else {
@@ -44,24 +44,29 @@ async function main() {
                         let text = fo.message + '\n' + fo.subtitle;
                         // TODO - Enrich messages
                         let slackProps = {
-                            text: text,
-                            channel: req.body.event.channel,
-                        //     blocks: {[
-                        //         {
-                        //             "type": "actions",
-                        //             "elements": [
-                        //                 {
-                        //                     "type": "button",
-                        //                     "text": {
-                        //                         "type": "plain_text",
-                        //                         "text": "My Button",
-                        //                         "emoji": false
-                        //                     }
-                        //                 }
-                        //             ]
-                        //         }
-                        //     ]
-                        // }
+                            'text': text,
+                            'channel': req.body.event.channel,
+                            // 'blocks': [
+                            //     {
+                            //         'accessory': {
+                            //             'type': 'static_select',
+                            //             'options': [
+                            //                 {
+                            //                     'text': {
+                            //                         'type': 'plain_text',
+                            //                         'emoji': true,
+                            //                         'text': 'option 1'
+                            //                     },
+                            //                     'text': {
+                            //                         'type': 'plain_text',
+                            //                         'emoji': true,
+                            //                         'text': 'option 2'
+                            //                     }
+                            //                 }
+                            //             ]
+                            //         }
+                            //     }
+                            // ]
                         };
                         slackbot.send(slackProps);
                     }
