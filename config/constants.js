@@ -1,13 +1,13 @@
 // Configure some basic defaults
-// No trailing "/" on URLs
+// No trailing '/' on URLs
 
 // FOAAS configs
-const URL_FOAAS = "https://www.foaas.com";
+const URL_FOAAS = 'https://www.foaas.com';
 
 // Slack configs
-// const URL_SLACK_POST_MESSAGE = "https://slack.com/api/chat.postMessage"; // Might not need this
-const DEFAULT_SLACK_CHANNEL = "tb-dev";
-const DEFAULT_CHANNEL_ID = "GLFAXF5B5";
+// const URL_SLACK_POST_MESSAGE = 'https://slack.com/api/chat.postMessage'; // Might not need this
+const DEFAULT_SLACK_CHANNEL = 'tb-dev';
+const DEFAULT_CHANNEL_ID = 'GLFAXF5B5';
 const WEB_SERVER_PORT = 3000;
 
 
