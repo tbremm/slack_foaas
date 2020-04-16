@@ -1,0 +1,41 @@
+{
+    "type": "section",
+    "text": {
+        "type": "mrkdwn",
+        "text": "Pick an item from the dropdown list"
+    },
+    "accessory": {
+        "type": "static_select",
+        "placeholder": {
+            "type": "plain_text",
+            "text": "Can haz choice",
+            "emoji": true
+        },
+        "options": [
+            {
+                "text": {
+                    "type": "plain_text",
+                    "text": "Choice 1",
+                    "emoji": true
+                },
+                "value": "value-0"
+            },
+            {
+                "text": {
+                    "type": "plain_text",
+                    "text": "Choice 2",
+                    "emoji": true
+                },
+                "value": "value-1"
+            },
+            {
+                "text": {
+                    "type": "plain_text",
+                    "text": "Choice 3",
+                    "emoji": true
+                },
+                "value": "value-2"
+            }
+        ]
+    }
+}

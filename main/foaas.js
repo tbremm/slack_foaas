@@ -27,24 +27,7 @@ class Foaas {
         }
     };
 
-    
-    // response.body JSON schema is:
-    // [
-    // {
-    //     "name": "Who the fuck are you anyway",
-    //     "url": "/anyway/:company/:from",
-    //     "fields": [
-    //         {
-    //             "name": "Company",
-    //             "field": "company"
-    //         },
-    //         {
-    //             "name": "From",
-    //             "field": "from"
-    //         }
-    //     ]
-    // }
-    // ]
+//  Get all of the legal operations, returns JSON - very big!
     async getOperations(url) {
         try {
             const response = await axios.get(url + '/operations');

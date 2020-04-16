@@ -1,5 +1,6 @@
 const constants = require('../config/constants');
 const slack = require('./post_to_slack');
+const slack_blocks = require('../data/slack_blocks.json');
 const foaas = require('./foaas');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -18,72 +19,55 @@ async function main() {
         var app = express();
         app.use(bodyParser.urlencoded({ extended: false }));
         app.use(bodyParser.json());
-        const operations = await myFoaas.getOperations(constants.URL_FOAAS);
-
 
         app.post('/slack', async (req, res) => {
             console.log(req.body);
             // Respond to verification requests
             // TODO - Verify that it's slack sending messages
-            if (req.body.event.type === 'app_mention') {
-                try {
-                    res.sendStatus(200);
-                    let arText = req.body.event.text.split(' ');
-                    arText.shift(); // Not passing the user ref to foaas
-                    // Just blindly passing args through - TODO: verification, error handling
-                    if (arText[0] === 'operations') {
-                        const ops = await myFoaas.getOperations(constants.URL_FOAAS);
-                        let slackProps = {
-                            text: JSON.stringify(ops, null, 4),
-                            channel: req.body.event.channel
-                        };
-                        slackbot.send(slackProps);
-                    } else {
-                        const fo = await myFoaas.getFO(constants.URL_FOAAS, arText);
-                        // TODO - Handle when message/subtitle don't exist due to error
-                        let text = fo.message + '\n' + fo.subtitle;
-                        // TODO - Enrich messages
-                        let slackProps = {
-                            text: text,
-                            channel: req.body.event.channel,
-                        //     blocks: {[
-                        //         {
-                        //             "type": "actions",
-                        //             "elements": [
-                        //                 {
-                        //                     "type": "button",
-                        //                     "text": {
-                        //                         "type": "plain_text",
-                        //                         "text": "My Button",
-                        //                         "emoji": false
-                        //                     }
-                        //                 }
-                        //             ]
-                        //         }
-                        //     ]
-                        // }
-                        };
-                        slackbot.send(slackProps);
-                    }
-                } catch (error) {
-                    console.log(error);
-                    let slackProps = {
-                        text: 'An error has occurred:\n\n' + error,
-                        channel: req.body.event.channel
-                    };
-                    slackbot.send(slackProps);
-                }
-            } else if (req.body.type === 'url_verification') {
+            if (req.body.type === 'url_verification') {
                 // console.log('URL Verification Challenge: ' + req.body.challenge); // DEBUG
                 res.header({
                     'Content-type': 'application/json'
                 });
                 // Need to return a copy of their challenge to verify the request URL
                 res.json([req.body.challenge]);
+                slackbot.send(res);
+            } else if (req.body.event.type === 'app_mention') {
+                try {
+                    res.sendStatus(200);
+                    let slackProps = {};
+                    let arText = req.body.event.text.split(' ');
+                    arText.shift(); // Not passing the user ref to foaas
+                    // Give a list of options
+                    if (arText[0] === 'operations') {
+                        slackProps = {
+                            'channel': req.body.event.channel,
+                            'blocks': [ JSON.parse(JSON.stringify(slack_blocks)) ]
+                        };
+                    } else {
+                        // Just blindly passing args through - TODO: verification, error handling
+                        const fo = await myFoaas.getFO(constants.URL_FOAAS, arText);
+                        // TODO - Handle when message/subtitle don't exist due to error
+                        let text = fo.message + '\n' + fo.subtitle;
+                        // TODO - Enrich messages
+                        slackProps = {
+                            'text': text,
+                            'channel': req.body.event.channel,
+                        };
+                    }
+                    slackbot.send(slackProps);
+                } catch (error) {
+                    console.log(error);
+                    slackProps = {
+                        text: 'An error has occurred:\n\n' + error,
+                        channel: req.body.event.channel
+                    };
+                    slackbot.send(slackProps);
+                }
             } else {
                 res.sendStatus(200);
                 console.log(error);
-                let slackProps = {
+                slackProps = {
                     text: 'An unhandled event type has occurred: ' + req.body.event.type,
                     channel: req.body.event.channel
                 };
@@ -94,7 +78,6 @@ async function main() {
         app.listen(port, () => {
             console.log('Server running on port ' + port.toString());
         });
-
     } catch (error) {
         console.log('main: ' + error);
         process.exit(-1);
