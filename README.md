@@ -4,6 +4,8 @@ Slackbot for inappropriate API calls
 # State of the Slackbot
 Runs a local webserver and will call the [FOAAS API](https://www.foaas.com/) with the arguments given after a user mention (@mr_robot). Then posts the response to the slack channel that it was requested in. Needs error handling, input validation, etc. Each time the webserver tunnel is created you have to reverify the URL with Slack because it's random each time because I'm too cheap to buy a paid ngrok subscription. Currently a walking skeleton, but it techinically works!
 
+Most recent work is in constructing more fully-featured custom messages with the idea of providing a drop-down with the various base commands to select. This part is very much a WIP.
+
 # Usage
 _Note that this is using Windows CMD syntax. Someday I'll dual boot..._
 1. Make sure [ngrok](https://ngrok.com/download "Download ngrok") is installed and in your path
@@ -18,7 +20,7 @@ _Note that this is using Windows CMD syntax. Someday I'll dual boot..._
    Region                        United States (us)
    Web Interface                 http://127.0.0.1:4040
    Forwarding                    http://055cf5b0.ngrok.io -> http://localhost:3000
-   Forwarding                    https://055cf5b0.ngrok.io -> http://localhost:3000```
+   Forwarding                    https://055cf5b0.ngrok.io -> http://localhost:3000
 4. Navigate to the project directory and start the program
    1. `$ node main/main.js`
 5. Go to Slack to [verify the URL](https://api.slack.com/apps/AMH4N17RA/event-subscriptions?)
